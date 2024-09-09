@@ -31,17 +31,14 @@ class AddUserDialog extends StatelessWidget {
             SizedBox(
               height: 10,
             ),
-            GetBuilder<UserController>(
-              builder: (controller) {
-                return ElevatedButton(
-                  onPressed: () {
-                    controller.addUser(User(nameController.text,
-                        int.parse(nationalCodeController.text)));
-                    Get.back();
-                  },
-                  child: Text("ذخیره"),
-                );
+            ElevatedButton(
+              onPressed: () {
+                var controller = Get.find<UserController>();
+                controller.addUser(User(nameController.text,
+                    int.parse(nationalCodeController.text)));
+                Get.back();
               },
+              child: Text("ذخیره"),
             )
           ],
         ),

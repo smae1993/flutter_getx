@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_getx/controllers/user_controller.dart';
+import 'package:flutter_getx/default_bindings.dart';
 import 'package:flutter_getx/views/home_page.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 void main() {
-  Get.lazyPut(
-    () => UserController(),
-    fenix: true,
-  );
+  GetStorage.init();
   runApp(const MainApp());
 }
 
@@ -16,8 +14,9 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const GetMaterialApp(
+    return GetMaterialApp(
       home: HomePage(),
+      initialBinding: DefaultBindings(),
       locale: Locale("fa"),
     );
   }

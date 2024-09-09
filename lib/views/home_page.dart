@@ -16,18 +16,21 @@ class HomePage extends StatelessWidget {
         child: const Icon(Icons.add),
       ),
       body: GetBuilder<UserController>(
+        autoRemove: false,
         builder: (controller) {
           return Column(
             children: controller.users
                 .map(
                   (user) => Card(
+                      child: Padding(
+                    padding: EdgeInsets.all(10),
                     child: Row(
                       children: [
                         Text(user.name),
                         Text(user.nationalCode.toString()),
                       ],
                     ),
-                  ),
+                  )),
                 )
                 .toList(),
           );
